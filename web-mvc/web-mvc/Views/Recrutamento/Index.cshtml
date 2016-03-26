@@ -1,8 +1,9 @@
-﻿
+﻿@using ReCaptcha.Mvc5;
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+
 <div class="row">
     <div class="box">
         <div class="col-lg-12">
@@ -11,8 +12,88 @@
                 <strong>Quer fazer parte da nossa equipe?</strong>
             </h2>
             <hr>
-            
+
+            @if (!ViewBag.Erro)
+            {
+                if (ViewBag.Mensagem.Equals(string.Empty))
+                {
+                    @model web_mvc.Models.RecrutamentoModel
+
+                    using (Html.BeginForm("Alistarse", "Recrutamento", FormMethod.Post))
+                        {
+                        @Html.AntiForgeryToken()
+
+                        <div class="form-horizontal">
+                            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.Nome, htmlAttributes: new { @class = "control-label col-md-2" })
+                                <div class="col-md-10">
+                                    @Html.EditorFor(model => model.Nome, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.Nome, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label col-md-2" })
+                                <div class="col-md-10">
+                                    @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                @Html.Label("Zapzap", htmlAttributes: new { @class = "control-label col-md-2" })
+                                <div class="col-md-10">
+                                    @Html.EditorFor(model => model.Telefone, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.Telefone, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.Mensagem, htmlAttributes: new { @class = "control-label col-md-2" })
+                                <div class="col-md-10">
+                                    @Html.EditorFor(model => model.Mensagem, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.Mensagem, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="col-md-offset-2 col-md-10">
+                                    <!--Render the recaptcha-->
+                                    @Html.reCAPTCHA("6LfKyxsTAAAAAOSaY3CBM2IRRowmKCDgaPjgwPH_")
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="col-md-offset-2 col-md-10">
+                                    <input type="submit" value="Alistar-se!" class="btn btn-default" />
+                                </div>
+                            </div>
+                        </div>
+                    }
+                }
+                else
+                {
+                    <div class="alert-success">
+                        <div>
+                            <p>
+                                @ViewBag.Mensagem.ToString()
+                            </p>
+                        </div>
+                    </div>
+                }
+            }
+            else
+            {
+                <div class="alert-danger">
+                    <div>
+                        <p>
+                            @ViewBag.Mensagem.ToString()
+                        </p>
+                    </div>
+                </div>
+            }
+
         </div>
     </div>
 </div>
-
