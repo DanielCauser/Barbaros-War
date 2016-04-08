@@ -15,7 +15,7 @@
     <link href="~/Content/bootstrap-table.css" rel="stylesheet">
     <link href="~/Content/business-casual.css" rel="stylesheet">
     <link href="~/Content/Site.css" rel="stylesheet">
-    
+
     <!-- Fonts -->
     <link href='~/Fonts/Supercell-Magic.ttf' rel='stylesheet' type='text/css'>
     <link href="http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css">
@@ -36,28 +36,11 @@
     <script src="~/Scripts/bootstrap-table.js"></script>
 </head>
 <body>
-    <div class="container-fluid">
-
-        <div class="container">
-            @Html.Partial("~/Views/Shared/_LogoClan.cshtml")
-        </div>
-
-        <div id="header">
-            @Html.Partial("~/Views/Shared/_MenuExterno.cshtml")
-        </div>
-        <div class="container" id="body">
-            @RenderBody()
-        </div>
-
-        @*<div class="row" id="footer">
-                <div class="text-center">
-                    <p>Copyright &copy; Your Website 2016</p>
-                </div>
-            </div>*@
-
+    <div class="container">
+        @Html.Partial("~/Views/Shared/_LogoClan.cshtml")
+        @Html.Partial("~/Views/Shared/_MenuExterno.cshtml")
+        @RenderBody()
     </div>
-    
-
     <script>
         $('.carousel').carousel({
             interval: 5000 //changes the speed
