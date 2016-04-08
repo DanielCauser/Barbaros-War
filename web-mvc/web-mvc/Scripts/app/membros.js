@@ -19,6 +19,7 @@ function CarregarInformacoesBootstrapTable(lista) {
     var json = jQuery.parseJSON(lista);
     $('#membros-table').bootstrapTable({
         data: json.items,
+        sortable: true,
     });
 };
 
