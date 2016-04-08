@@ -1,19 +1,16 @@
-﻿using Nito.AsyncEx;
-using System;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Net.Http;
 using System.Net.Http.Headers;
+using System.Text;
+using System.Threading.Tasks;
 
-namespace apiclashtest
+namespace BARBAROS.REPOSITORIO_EXTERNO
 {
-    class Program
+    public class MembrosClanRepositorioExterno : IMembrosClanRepositorioExterno
     {
-
-        static void Main(string[] args)
-        {
-            AsyncContext.Run(() => MainAsync(args));
-        }
-
-        static async void MainAsync(string[] args)
+        public string BuscarMembrosBarbarosWar()
         {
             try
             {
@@ -25,15 +22,14 @@ namespace apiclashtest
                     client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
                     client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
-                    
-                    var response = await client.GetStringAsync("/v1/clans?name=%232VYCV080");
 
+                    var response = client.GetStringAsync("/v1/clans/%232VYCV080/members").Result;
+                    return response;
                 }
             }
             catch (Exception ex)
             {
-
-                throw;
+                return "";
             }
         }
     }

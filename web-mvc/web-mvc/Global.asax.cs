@@ -1,4 +1,6 @@
-﻿using System;
+﻿using BARBAROS.IOC;
+using SimpleInjector.Integration.Web.Mvc;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -13,6 +15,9 @@ namespace web_mvc
         {
             AreaRegistration.RegisterAllAreas();
             RouteConfig.RegisterRoutes(RouteTable.Routes);
+
+            var container = new RegistradorDeIoc().Registrador();
+            DependencyResolver.SetResolver(new SimpleInjectorDependencyResolver(container));
         }
     }
 }

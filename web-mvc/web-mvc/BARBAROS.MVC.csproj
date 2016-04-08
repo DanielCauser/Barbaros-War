@@ -59,6 +59,18 @@
       <HintPath>..\packages\RecaptchaNet.2.1.0\lib\net451\Recaptcha.Web.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="SimpleInjector, Version=3.1.2.0, Culture=neutral, PublicKeyToken=984cb50dea722e99, processorArchitecture=MSIL">
+      <HintPath>..\packages\SimpleInjector.3.1.2\lib\net45\SimpleInjector.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="SimpleInjector.Integration.Web, Version=3.1.2.0, Culture=neutral, PublicKeyToken=984cb50dea722e99, processorArchitecture=MSIL">
+      <HintPath>..\packages\SimpleInjector.Integration.Web.3.1.2\lib\net40\SimpleInjector.Integration.Web.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="SimpleInjector.Integration.Web.Mvc, Version=3.1.2.0, Culture=neutral, PublicKeyToken=984cb50dea722e99, processorArchitecture=MSIL">
+      <HintPath>..\packages\SimpleInjector.Integration.Web.Mvc.3.1.2\lib\net40\SimpleInjector.Integration.Web.Mvc.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -137,12 +149,17 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AboutController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\MembrosController.cs" />
     <Compile Include="Controllers\RecrutamentoController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\ClanModel.cs" />
+    <Compile Include="Models\LigaModel.cs" />
+    <Compile Include="Models\MembroModel.cs" />
     <Compile Include="Models\RecrutamentoModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Util\Conversor.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\web.config" />
@@ -168,6 +185,17 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Helper\" />
+    <Folder Include="Views\Membros\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BARBAROS.APLICACAO\BARBAROS.APLICACAO.csproj">
+      <Project>{4781fd39-2023-4f86-b320-ba9b8c184c68}</Project>
+      <Name>BARBAROS.APLICACAO</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\BARBAROS.IOC\BARBAROS.IOC.csproj">
+      <Project>{a57b58e4-e8f0-42f1-a51f-3ef060e588d3}</Project>
+      <Name>BARBAROS.IOC</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
