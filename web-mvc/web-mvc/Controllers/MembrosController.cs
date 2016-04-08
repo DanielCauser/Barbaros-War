@@ -10,14 +10,15 @@ namespace web_mvc.Controllers
     public class MembrosController : Controller
     {
         private readonly IClansServicoApp _buscarClans;
+
         public MembrosController(IClansServicoApp buscarClans)
         {
             _buscarClans = buscarClans;
         }
         // GET: Membros
-        public ActionResult Index()
+        public JsonResult Index()
         {
-            return View();
+            return Json(_buscarClans.BuscarMembrosBarbarosWar(), JsonRequestBehavior.AllowGet);
         }
     }
 }

@@ -1,18 +1,18 @@
 ﻿@font-face {
-  font-family: 'Super Cell';
-
-  src: url('../fonts/Supercell-Magic.ttf');
+    font-family: 'Super Cell';
+    src: url('../fonts/Supercell-Magic.ttf');
+    font-size: medium;
 }
 
 
 @media (min-width: 768px ) {
-  .row {
-      position: relative;
-  }
+    .row {
+        position: relative;
+    }
 
-  .bottom-align-text {
-    position: absolute;
-    bottom: 0;
-    right: 0;
-  }
+    .bottom-align-text {
+        position: absolute;
+        bottom: 0;
+        right: 0;
+    }
 }
