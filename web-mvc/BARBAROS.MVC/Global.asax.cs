@@ -1,10 +1,8 @@
 ﻿using BARBAROS.IOC;
 using BARBAROS.MVC.App_Start;
+using BARBAROS.REPOSITORIO.Context;
+using BARBAROS.REPOSITORIO.Inicializador;
 using SimpleInjector.Integration.Web.Mvc;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
@@ -18,6 +16,10 @@ namespace web_mvc
             AreaRegistration.RegisterAllAreas();
             BundleConfig.RegisterBundles(BundleTable.Bundles);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
+
+
+
+            BarbarosDbContext db = new BarbarosDbContext();
 
             var container = new RegistradorDeIoc().Registrador();
             DependencyResolver.SetResolver(new SimpleInjectorDependencyResolver(container));
