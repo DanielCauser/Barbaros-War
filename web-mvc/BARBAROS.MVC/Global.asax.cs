@@ -1,4 +1,5 @@
 ﻿using BARBAROS.IOC;
+using BARBAROS.MVC;
 using BARBAROS.MVC.App_Start;
 using BARBAROS.REPOSITORIO.Context;
 using BARBAROS.REPOSITORIO.Inicializador;
@@ -16,11 +17,7 @@ namespace web_mvc
             AreaRegistration.RegisterAllAreas();
             BundleConfig.RegisterBundles(BundleTable.Bundles);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
-
-
-
-            BarbarosDbContext db = new BarbarosDbContext();
-
+            
             var container = new RegistradorDeIoc().Registrador();
             DependencyResolver.SetResolver(new SimpleInjectorDependencyResolver(container));
         }

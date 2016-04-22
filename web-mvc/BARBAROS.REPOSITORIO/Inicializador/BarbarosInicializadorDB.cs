@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace BARBAROS.REPOSITORIO.Inicializador
 {
-    public class BarbarosInicializadorDB : DropCreateDatabaseAlways<BarbarosDbContext>
+    public class BarbarosInicializadorDB : System.Data.Entity.DropCreateDatabaseIfModelChanges<BarbarosDbContext>
     {
         public BarbarosInicializadorDB(BarbarosDbContext context)
         {
@@ -31,7 +31,6 @@ namespace BARBAROS.REPOSITORIO.Inicializador
             context.Membro.Add(s));
             context.SaveChanges();
             context.Database.Initialize(true);
-            //base.Seed(context);
         }
     }
 }

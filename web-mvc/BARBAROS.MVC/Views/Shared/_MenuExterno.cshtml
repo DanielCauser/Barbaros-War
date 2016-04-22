@@ -1,4 +1,5 @@
-﻿<!-- Navigation -->
+﻿@using Microsoft.AspNet.Identity
+<!-- Navigation -->
 <nav class="navbar navbar-default" role="navigation">
     <div class="container">
         <!-- Brand and toggle get grouped for better mobile display -->
@@ -25,8 +26,29 @@
                     <a href="/Recrutamento">Junte-se a nós</a>
                 </li>
             </ul>
+            @if (Request.IsAuthenticated)
+            {
+                using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
+                {
+                    @Html.AntiForgeryToken()
+
+                    <p>Hello  @User.Identity.GetUserName() </p>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="javascript:document.getElementById('logoutForm').submit()">Log off</a></li>
+                    </ul>
+                }
+            }
+            else
+            {
+                <ul class="nav navbar-nav navbar-right">
+                    <li> @Html.ActionLink("Login", "Login", "Account")</li>
+                    <li> @Html.ActionLink("Register", "Register", "Account")</li>
+                </ul>
+            }
         </div>
         <!-- /.navbar-collapse -->
     </div>
     <!-- /.container -->
 </nav>
+
+
