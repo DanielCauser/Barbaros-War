@@ -22,7 +22,7 @@ namespace BARBAROS.MVC.Models
         public bool RememberMe { get; set; }
     }
 
-    public class RegisterViewModel
+    public class RegisterViewModel : ReCaptcha.Mvc5.Model.ReCaptchaViewModel
     {
         [Required]
         [EmailAddress]
@@ -39,5 +39,8 @@ namespace BARBAROS.MVC.Models
         [Display(Name = "Confirm password")]
         [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
+
+        [Required(ErrorMessage = "Stop spammig. Read books !")]
+        public override string recaptcha_response_field { get; set; }
     }
 }

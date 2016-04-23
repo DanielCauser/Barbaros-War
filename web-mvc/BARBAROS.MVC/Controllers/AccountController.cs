@@ -7,18 +7,19 @@ using Microsoft.Owin.Security;
 using BARBAROS.MVC.Models;
 using BARBAROS.REPOSITORIO.Models;
 using BARBAROS.REPOSITORIO.Configuration;
+using ReCaptcha.Mvc5;
 
 namespace BARBAROS.MVC.Controllers
 {
-    
+
     [Authorize]
     public class AccountController : Controller
     {
-        
+
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
 
-                
+
         public ApplicationSignInManager SignInManager
         {
             get
@@ -65,7 +66,7 @@ namespace BARBAROS.MVC.Controllers
                 return View(model);
             }
 
-            
+
             var result = await SignInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, shouldLockout: false);
             switch (result)
             {
@@ -89,7 +90,7 @@ namespace BARBAROS.MVC.Controllers
         {
             return View();
         }
-        
+
 
         //
         // POST: /Account/Register
@@ -98,16 +99,36 @@ namespace BARBAROS.MVC.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Register(RegisterViewModel model)
         {
+            ViewBag.Erro = false;
+            ViewBag.Mensagem = string.Empty;
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
-                var result = await UserManager.CreateAsync(user, model.Password);
-                if (result.Succeeded)
+                ReCaptchaResponse response = await this.verifyReCAPTCHA(model, "6LfKyxsTAAAAAOWxz6s77gdm8aqoGfA0Gzq6fCgb", true);
+                if (response.Success)
                 {
-                    await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
-                    return RedirectToAction("Index", "Home");
+                    try
+                    {
+                        var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
+                        var result = await UserManager.CreateAsync(user, model.Password);
+                        if (result.Succeeded)
+                        {
+                            await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
+                            return RedirectToAction("Index", "Home");
+                        }
+                        AddErrors(result);
+                    }
+                    catch (System.Exception)
+                    {
+
+                        ModelState.AddModelError("", "Ooops...Ocorreu um problema, tente novamente mais tarde.");
+                    }
+
+                    return View("Index");
                 }
-                AddErrors(result);
+                else
+                {
+                    ModelState.AddModelError("", "Pare de spamar, vá ler um livro!");
+                }
             }
 
             // If we got this far, something failed, redisplay form

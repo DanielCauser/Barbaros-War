@@ -21,7 +21,7 @@ namespace BARBAROS.MVC.Models
         [StringLength(250)]
         public string Mensagem { get; set; }
 
-        [Required(ErrorMessage = "Stop spammig. Read books !")]
+        [Required(ErrorMessage = "Código informado incorreto!")]
         public override string recaptcha_response_field { get; set; }
     }
 }

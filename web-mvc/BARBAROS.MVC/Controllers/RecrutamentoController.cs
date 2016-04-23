@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Net.Mail;
 using System.Web.Mvc;
-using web_mvc.Models;
 using System.Threading.Tasks;
 using ReCaptcha.Mvc5;
+using BARBAROS.MVC.Models;
 
 namespace BARBAROS.MVC.Controllers
 {

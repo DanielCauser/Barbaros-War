@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using web_mvc.Models;
+﻿using BARBAROS.MVC.Models;
 
-namespace web_mvc.Util
+namespace BARBAROS.MVC.Util
 {
     public static class Conversor
     {
