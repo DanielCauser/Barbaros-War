@@ -1,13 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using Microsoft.AspNet.Identity.EntityFramework;
+﻿using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity;
-using BARBAROS.MVC.Models;
 using Microsoft.Owin;
 using Microsoft.Owin.Security;
 using Microsoft.AspNet.Identity.Owin;
+using BARBAROS.REPOSITORIO.Models;
+using BARBAROS.REPOSITORIO.Context;
 
 namespace BARBAROS.MVC.App_Start
 {

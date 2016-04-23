@@ -11,6 +11,7 @@ using Microsoft.Owin.Security;
 using System.Security.Claims;
 using BARBAROS.MVC.App_Start;
 using BARBAROS.MVC.Models;
+using BARBAROS.REPOSITORIO.Models;
 
 namespace AspNetMVCIdentity.Controllers
 {

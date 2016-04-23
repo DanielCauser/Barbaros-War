@@ -8,13 +8,13 @@ using System.Threading.Tasks;
 
 namespace BARBAROS.REPOSITORIO.Inicializador
 {
-    public class BarbarosInicializadorDB : System.Data.Entity.DropCreateDatabaseIfModelChanges<BarbarosDbContext>
+    public class BarbarosInicializadorDB : DropCreateDatabaseIfModelChanges<ApplicationDbContext>
     {
-        public BarbarosInicializadorDB(BarbarosDbContext context)
+        public BarbarosInicializadorDB(ApplicationDbContext context)
         {
             this.Seed(context);
         }
-        protected override void Seed(BarbarosDbContext context)
+        protected override void Seed(ApplicationDbContext context)
         {
             var membros = new List<MembroModel>
             {
