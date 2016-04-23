@@ -5,7 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
 
-namespace web_mvc
+namespace BARBAROS.MVC.App_Start
 {
     public class RouteConfig
     {

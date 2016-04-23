@@ -1,4 +1,4 @@
-﻿namespace web_mvc.Models
+﻿namespace BARBAROS.MVC.Models
 {
     public class LigaModel
     {

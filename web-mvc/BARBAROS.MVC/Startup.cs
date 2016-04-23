@@ -1,14 +1,9 @@
-﻿using System;
-using System.Threading.Tasks;
-
-using Owin;
+﻿using Owin;
 using Microsoft.Owin;
 using Microsoft.AspNet.Identity;
-using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security.Cookies;
-using BARBAROS.MVC.Models;
-using BARBAROS.MVC.App_Start;
 using BARBAROS.REPOSITORIO.Context;
+using BARBAROS.REPOSITORIO.Configuration;
 
 [assembly: OwinStartup(typeof(BARBAROS.MVC.Startup))]
 
@@ -19,7 +14,7 @@ namespace BARBAROS.MVC
         public void Configuration(IAppBuilder app)
         {
             // Configure the db context, user manager and signin manager to use a single instance per request
-            app.CreatePerOwinContext(BARBAROS.REPOSITORIO.Context.ApplicationDbContext.Create);
+            app.CreatePerOwinContext(ApplicationDbContext.Create);
             app.CreatePerOwinContext<ApplicationUserManager>(ApplicationUserManager.Create);
             app.CreatePerOwinContext<ApplicationSignInManager>(ApplicationSignInManager.Create);
 

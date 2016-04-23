@@ -1,11 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Web;
+﻿using System.ComponentModel.DataAnnotations;
 
 
-namespace web_mvc.Models
+namespace BARBAROS.MVC.Models
 {
     public class RecrutamentoModel : ReCaptcha.Mvc5.Model.ReCaptchaViewModel
     {

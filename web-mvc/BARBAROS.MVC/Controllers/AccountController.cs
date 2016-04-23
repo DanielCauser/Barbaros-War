@@ -1,19 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using System.Web;
 using System.Web.Mvc;
-
 using System.Threading.Tasks;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
-using System.Security.Claims;
-using BARBAROS.MVC.App_Start;
 using BARBAROS.MVC.Models;
 using BARBAROS.REPOSITORIO.Models;
+using BARBAROS.REPOSITORIO.Configuration;
 
-namespace AspNetMVCIdentity.Controllers
+namespace BARBAROS.MVC.Controllers
 {
     
     [Authorize]
@@ -94,10 +89,7 @@ namespace AspNetMVCIdentity.Controllers
         {
             return View();
         }
-
-
-
-
+        
 
         //
         // POST: /Account/Register

@@ -1,16 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Net.Mail;
-using System.Web;
 using System.Web.Mvc;
 using web_mvc.Models;
-using Recaptcha.Web;
-using Recaptcha.Web.Mvc;
 using System.Threading.Tasks;
 using ReCaptcha.Mvc5;
 
-namespace web_mvc.Controllers
+namespace BARBAROS.MVC.Controllers
 {
     public class RecrutamentoController : Controller
     {

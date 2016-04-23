@@ -93,6 +93,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Configuration\ApplicationSignInManager.cs" />
+    <Compile Include="Configuration\ApplicationUserManager.cs" />
+    <Compile Include="Configuration\ApplicationUserStore.cs" />
     <Compile Include="Context\ApplicationDbContext.cs" />
     <Compile Include="Inicializador\BarbarosInicializadorDB.cs" />
     <Compile Include="Models\ApplicationUser.cs" />

@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-
-namespace web_mvc.Models
+﻿
+namespace BARBAROS.MVC.Models
 {
     public class MembroModel
     {
